@@ -9,8 +9,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": ":EricLagarda",
-            "email": ":info@ericlagarda.com"
+            "name": "EricLagarda",
+            "email": "info@ericlagarda.com"
         }
     ],
     "require": {
