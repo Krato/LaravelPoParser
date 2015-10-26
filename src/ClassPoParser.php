@@ -1,10 +1,25 @@
 <?php namespace EricLagarda\LaravelPoParser;
 
+
+use sepia\FileHandler;
+use sepia\PoParser;
+
 class ClassPoParser {
 
-    public function get($data = [])
+
+    public function FileHandler($file)
     {
-        echo "foo";
-    }
+        
+            return new \Sepia\FileHandler($file);
+       
+    } 
+
+
+     public function get($filehandler)
+    {
+        
+        return new \Sepia\PoParser($filehandler);
+       
+    } 
     
 }

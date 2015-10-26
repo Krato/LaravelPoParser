@@ -16,6 +16,7 @@
     "require": {
         "illuminate/support": "~5.1",
         "php" : ">=5.3.0",
+        "gettext/gettext": "3.*",
         "sepia/po-parser" : "dev-master"
     },
     "require-dev": {

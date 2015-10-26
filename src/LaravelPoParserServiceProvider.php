@@ -27,4 +27,7 @@ class LaravelPoParserServiceProvider extends ServiceProvider
             return new \EricLagarda\LaravelPoParser\ClassPoParser;
         });
     }
+
+
+    
 }
