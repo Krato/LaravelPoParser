@@ -2,10 +2,10 @@
     "name": "EricLagarda/LaravelPoParser",
     "description": ":package_description",
     "keywords": [
-        "league",
-        ":package_name"
+        "laravel5",
+        "po parser"
     ],
-    "homepage": "https://github.com/thephpEricLagarda/LaravelPoParser",
+    "homepage": "https://github.com/krato/LaravelPoParser",
     "license": "MIT",
     "authors": [
         {
