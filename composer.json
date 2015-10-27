@@ -1,6 +1,6 @@
 {
     "name": "EricLagarda/LaravelPoParser",
-    "description": ":package_description",
+    "description": "Laravel PoParser",
     "keywords": [
         "laravel5",
         "po parser"
