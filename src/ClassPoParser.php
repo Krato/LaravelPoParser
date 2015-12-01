@@ -7,6 +7,7 @@ use Gettext\Extractors;
 use Gettext\Generators;
 use Gettext\Translations;
 use Gettext\Translator;
+use Filesystem;
 use Config;
 use App;
 use File;
@@ -124,7 +125,7 @@ class ClassPoParser {
         if (is_file(base_path()."/".$file.'mo')) {
             $entries->mergeWith(Extractors\Mo::fromFile(base_path()."/".$file.'mo'));
         }
-        $new_entries = array();
+        $new_entries = new Translations();
         foreach($entries as $entry){
             if(!$entry->getTranslation()){
                 $new_entries[] = $entry;
@@ -213,25 +214,28 @@ class ClassPoParser {
         $file = $path.'/'.self::$config['domain'];
 
 
-
+        $isMO = false;
+        $isPo = False;
         if(is_file($file.'.mo')) {
+            $isMO = true;
             $translations = Translations::fromMoFile($file.'.mo');
         } 
 
         if(is_file($file.'.po')) {
+            $isPo = true;
             $translationsPo = Translations::fromPoFile($file.'.po');
         }
 
-        if($translations){
+
+
+        if($isMO && $isPo){
             $translations->mergeWith($translationsPo);
-        } else {
+        }elseif($isPo) {
             $translations = $translationsPo;
-        }
-        
-        if(!$translations){
+        } else {
             $translations = new Translations();
         }
-        
+
         $translations->setLanguage($locale);
         $translations->setHeader('LANGUAGE', $locale);
 
@@ -297,6 +301,11 @@ class ClassPoParser {
         $translations = self::getTranslationObject();
         $path = base_path()."/".dirname(self::getFile(self::$locale));
         $file = $path.'/'.self::$config['domain'];
+
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+
         $translations->toPoFile($file.'.po');
         self::updateMO();
         clearstatcache();
